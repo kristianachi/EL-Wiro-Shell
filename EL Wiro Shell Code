@@ -1,0 +1,76 @@
+ int whiteone = 2;
+ int blueone = 3;
+ int bluetwo = 4;
+ int whitetwo = 5;
+ int led = 6;
+// the setup routine runs once when you press reset:
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+  pinMode (whiteone, OUTPUT);
+  pinMode (blueone, OUTPUT);
+  pinMode (bluetwo, OUTPUT);
+  pinMode (whitetwo, OUTPUT);
+  pinMode (led, OUTPUT);
+} 
+
+// the loop routine runs over and over again forever:
+void loop() {
+  // read the input on analog pin 0:
+  int sensorValue = analogRead(A0);
+  // print out the value you read:
+  Serial.println(sensorValue);
+  delay(1);        // delay in between reads for stability
+
+ if (sensorValue < 100){
+  digitalWrite (led, HIGH);
+   digitalWrite(whiteone, LOW);     // Turn the LED on
+  digitalWrite(blueone, LOW);      // Turn the LED off
+  digitalWrite (bluetwo, LOW);
+  digitalWrite(whitetwo, LOW); 
+  }
+if (sensorValue > 100){
+  digitalWrite (led, LOW);
+ digitalWrite(whiteone, HIGH);     // Turn the LED on
+  digitalWrite(blueone, HIGH);      // Turn the LED off
+  digitalWrite (bluetwo, HIGH);
+  digitalWrite(whitetwo, HIGH);}
+
+if (sensorValue > 200 && sensorValue < 300)              
+{  digitalWrite(whiteone, LOW);
+   digitalWrite(whitetwo, LOW); 
+  delay(1000);
+  digitalWrite(whiteone, HIGH);
+  digitalWrite (whitetwo, HIGH);
+  digitalWrite(blueone, LOW);
+  digitalWrite(bluetwo, LOW);      
+  delay(1000);          
+   digitalWrite(blueone, HIGH);
+   digitalWrite(bluetwo, HIGH);} 
+   if (sensorValue >300)
+{   digitalWrite (whiteone, HIGH);
+    delay (500);
+    digitalWrite (whiteone, LOW);
+    delay (500);
+    digitalWrite (blueone, HIGH);
+    delay (500);
+    digitalWrite (blueone, LOW);
+    delay (500);
+    digitalWrite (bluetwo, HIGH);
+    delay (500);
+    digitalWrite (bluetwo, LOW);
+    delay(500);
+    digitalWrite (whitetwo, HIGH);
+    delay (1000);
+    digitalWrite (whitetwo, LOW);
+    delay (1000);
+    }
+
+
+   
+   
+
+ 
+  
+  
+}
